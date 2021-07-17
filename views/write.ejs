@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title><%= title %></title>
+	<link rel="stylesheet" href="/stylesheets/bootstrap.css" />
+	<link rel="stylesheet" href="/stylesheets/style.css" />
+</head>
+<body class="bg-light">
+	<header id="header" class="d-flex justify-content-center px-5 py-3 border-bottom position-fixed bg-white w-100">
+		<a href="/" class="col-6 fs-4 text-dark text-decoration-none"><h1>Simple Board</h1></a>
+		<nav class="col-3 nav nav-pills d-flex justify-content-end">
+			<a href="/login" class="nav-item btn btn-outline-primary mx-1">Login</a>
+			<a href="/register" class="nav-item btn btn-primary">Sign-up</a>
+		</nav>
+	</header>
+
+	<div id="main-container" class="px-5 d-flex justify-content-center">
+
+		<div class="col-8">
+			<form action="/api/write" method="post">
+				<div class="col-12">
+					<label for="title" class="form-label fx-2 mt-5">제목</label>
+					<input type="text" class="form-control" name="title" id="title">
+				</div>
+				<div class="col-12">
+					<label for="content" class="form-label fx-2 mt-5">내용</label>
+					<textarea class="form-control" name="content" id="content" cols="30" rows="10"></textarea>
+				</div>
+				<div class="row mt-5 justify-content-end">
+					<div class="d-inline-block col-1">
+						<div class="btn btn-primary">작성하기</div>
+					</div>
+				</div>
+			</form>
+		</div>
+
+	</div>
+</body>
+</html>

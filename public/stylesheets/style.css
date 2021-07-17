@@ -1,0 +1,10 @@
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+#main-container { padding-top: 100px; }
+
+.userwrap-item { width: 50%; }
+
+/* global */
+
+.pointer { cursor: pointer; }
