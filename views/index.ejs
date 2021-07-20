@@ -1,64 +1,49 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title><%= title %></title>
-	<link rel="stylesheet" href="/stylesheets/bootstrap.css" />
-	<link rel="stylesheet" href="/stylesheets/style.css" />
-</head>
-<body class="bg-light">
-	<header id="header" class="d-flex justify-content-center px-5 py-3 border-bottom position-fixed bg-white w-100">
-		<a href="/" class="col-xxl-3 col-md-12 fs-4 text-dark text-decoration-none"><h1>Simple Board</h1></a>
-		<nav class="col-6 nav nav-pills d-flex justify-content-end">
-			<a href="/login" class="nav-item btn btn-outline-primary mx-1 mt-3">Login</a>
-			<a href="/register" class="nav-item btn btn-primary mt-3">Sign-up</a>
-		</nav>
-	</header>
+<% include header %>
 
-	<div id="main-container" class="px-5 justify-content-center row">
+<div id="main-container" class="px-5 mt-5 justify-content-center row">
 
-		<div class="left col-xxl-3 col-md-12 mb-md-5">
-			<div class="col-6 wrap border border-secondary bg-white rounded-3 text-center mx-md-auto">
-				<h3 class="mb-0 py-3">username</h3>
-				<div class="d-flex">
-					<a href="#" class="userwrap-item shadow-none btn-secondary text-center py-3 text-decoration-none text-white col-6">마이페이지</a>
-					<a href="/api/logout" class="userwrap-item shadow-none btn-secondary text-center py-3 text-decoration-none text-white col-6">로그아웃</a>
-				</div>
+	<div class="left col-xxl-3 col-md-12 mb-md-5">
+		<div class="col-6 wrap border border-secondary bg-white rounded-3 text-center mx-md-auto">
+			<h3 class="mb-0 py-3">username</h3>
+			<div class="d-flex">
+				<a href="#" class="userwrap-item shadow-none btn-secondary text-center py-3 text-decoration-none text-white col-6">마이페이지</a>
+				<a href="/api/logout" class="userwrap-item shadow-none btn-secondary text-center py-3 text-decoration-none text-white col-6">로그아웃</a>
 			</div>
 		</div>
-
-		<div class="center col-xxl-6 col-md-12">
-			<h2>게시판</h2>
-			<table class="table table-hover text-center fs-6">
-				<thead>
-					<tr class="fs-5">
-						<td>글번호</td>
-						<td>제목</td>
-						<td>작성자</td>
-						<td>조회수</td>
-					</tr>
-				</thead>
-				<tbody>
-					<tr class="pointer pt-3">
-						<td>1</td>
-						<td class="text-start">테스트</td>
-						<td>admin</td>
-						<td>100</td>
-					</tr>
-					<tr class="pointer pt-3">
-						<td>2</td>
-						<td class="text-start">test</td>
-						<td>admin</td>
-						<td>100</td>
-					</tr>
-				</tbody>
-			</table>
-			<div class="row justify-content-end">
-				<div class="col-12 d-flex justify-content-end">
-					<a href="/write" class="btn btn-outline-secondary">글쓰기</a>
-				</div>
-			</div>
-		</div>
-
 	</div>
-</body>
-</html>
+
+	<div class="center col-xxl-6 col-md-12">
+		<h2>게시판</h2>
+		<table class="table table-hover text-center fs-6">
+			<thead>
+				<tr class="fs-5">
+					<td>글번호</td>
+					<td>제목</td>
+					<td>작성자</td>
+					<td>조회수</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr onclick="javascript:location.href = '/board/view?bid=1'" class="pointer pt-3">
+					<td></td>
+					<td class="text-start">테스트</td>
+					<td>admin</td>
+					<td>100</td>
+				</tr>
+				<tr onclick="javascript:location.href = '/board/view?bid=2'" class="pointer pt-3">
+					<td></td>
+					<td class="text-start">test</td>
+					<td>admin</td>
+					<td>100</td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="row justify-content-end">
+			<div class="col-12 d-flex justify-content-end">
+				<a href="/board/write" class="btn btn-outline-secondary">글쓰기</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<% include footer %>

@@ -9,6 +9,7 @@
 Server-side | Node.js
 backend-framework | express
 frontend-framework | vanila-js
+frontend-css-library | bootstrap
 
 ##
 
@@ -16,13 +17,14 @@ frontend-framework | vanila-js
 
 <pre><code>sudo apt-get install -y ssh git
 
-sudo apt-get install -y npm nodejs node-express-generator mysql
+sudo apt-get install -y npm nodejs node-express-generator mysql-server
 
-sudo npm install -y express express-generator mysql
+sudo npm install -y express express-generator express-session mysql
 
 sudo express -e www
 
 cd www
 sudo npm install</code></pre>
+
 
 

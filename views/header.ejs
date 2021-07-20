@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title><%= title %></title>
+	<link rel="stylesheet" href="/stylesheets/bootstrap.css" />
+	<link rel="stylesheet" href="/stylesheets/style.css" />
+</head>
+<body class="bg-light">
+	<header id="header" class="d-flex justify-content-center px-5 py-3 border-bottom position-fixed bg-white w-100 top-0">
+		<a href="/" class="col-xxl-3 col-md-12 fs-4 text-dark text-decoration-none"><h1>Simple Board</h1></a>
+		<nav class="col-6 nav nav-pills d-flex justify-content-end">
+			
+<% if (session.logined) { -%>
+			<a href="/user/lotgout" class="nav-item btn btn-outline-primary mt-3">logout</a>
+<% } else { -%>
+			<a href="/user/login" class="nav-item btn btn-outline-primary mx-1 mt-3">Login</a>
+			<a href="/user/register" class="nav-item btn btn-primary mt-3">Sign-up</a>				
+<% } -%>
+
+		</nav>
+	</header>
