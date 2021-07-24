@@ -34,10 +34,20 @@ router.post('/register_process', function(req, res, next) {
     }
 
   })
-
-
-
 });
+
+router.post('/check_id', function(req, res, next) {
+  DBcon.query("SELECT * FROM users WHERE uid = ?", [req.body.id], function(err, rows, fields) {
+    console.log(err)
+    if (rows.length > 0) {
+      res.send("false")
+    } else {
+      res.send("true")
+    }
+  },function(data) {
+    console.log(data,'asd')
+  })
+})
 
 
 module.exports = router;

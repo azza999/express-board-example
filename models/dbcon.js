@@ -8,15 +8,14 @@ var db_info = {
 }
 
 const DBcon = {
-	query: function(sql, callback) {
-		console.log(sql)
+	query: function(sql, args, callback) {
 		let connection = mysql.createConnection(db_info);
 
 		connection.connect(function(err) {
 			if(err) console.log('error')
 		})
 		
-		return connection.query(sql, callback)
+		return connection.query(sql, args, callback)
 	},
 }
 
