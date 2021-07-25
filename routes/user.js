@@ -11,20 +11,33 @@ router.get('/register', function(req, res, next) {
   res.render('register', { title: 'register', session: req.session });
 });
 
-router.post('/logout_process', function(req, res, next) {
-
+router.get('/logout_process', function(req, res, next) {
+  req.session.user = null
+  req.session.logined = false
+  res.render('alert', { msg: '', href: '/' })
 });
 
 router.post('/login_process', async function(req, res, next) {
-  console.log(req.body.id)
-  console.log(req.body.password)
 
-  res.render('empty.ejs')
+  DBcon.query("SELECT * FROM users WHERE uid = ? AND upassword = ?",[req.body.id, req.body.password], function(err, rows, fields) {
+    if (rows.length > 0) {
+      req.session.user = {
+        uid: rows[0].uid,
+        uname: rows[0].uname
+      }
+
+      req.session.logined = true
+      res.render('alert', { msg: '로그인 성공!', href: '/' })
+    } else {
+      req.session.logined = false
+      res.render('alert', { msg: '로그인 실패!', href: '/user/login'})
+    }
+  })
+
 });
 
 router.post('/register_process', function(req, res, next) {
   DBcon.query("SELECT * FROM users WHERE uid = ?",req.body.id, function(err, rows, fields) {
-    console.log(arguments)
     if (rows.length > 0) {
       res.render('alert', {msg: '이미 가입된 아이디 입니다.', href: '/register'})
     } else {
@@ -38,14 +51,12 @@ router.post('/register_process', function(req, res, next) {
 
 router.post('/check_id', function(req, res, next) {
   DBcon.query("SELECT * FROM users WHERE uid = ?", [req.body.id], function(err, rows, fields) {
-    console.log(err)
+    console.log(err,rows,fields)
     if (rows.length > 0) {
       res.send("false")
     } else {
       res.send("true")
     }
-  },function(data) {
-    console.log(data,'asd')
   })
 })
 

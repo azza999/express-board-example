@@ -15,13 +15,17 @@ window.onload = function() {
 		return $password_validate.value == $password.value
 	}
 
-	$password.addEventListener('keyup',e=>{
-		if (checkPassword()) {
+	function updateSubmitBtn (bool) {
+		if (bool()) {
 			$submit.disabled = false
 		} else {
 			$submit.disabled = true
 		}
-	})
+	}
+
+
+	$password.addEventListener('keyup',()=>updateSubmitBtn(checkPassword()))
+	$password_validate.addEventListener('keyup',()=>updateSubmitBtn(checkPassword()))
 
 	$check_duplicate.addEventListener('click',e=>{
 		$.post('/user/check_id',{id: $id.value},data=>{
