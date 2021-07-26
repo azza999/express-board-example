@@ -4,11 +4,19 @@
 
 	<div class="left col-xxl-3 col-md-12 mb-md-5">
 		<div class="col-6 wrap border border-secondary bg-white rounded-3 text-center mx-md-auto">
-			<h3 class="mb-0 py-3"><%= session.uname %></h3>
+<% if (session.logined) { -%>
+	
+			<h3 class="mb-0 py-3"><%= session.user.uname %></h3>
 			<div class="d-flex">
 				<a href="#" class="userwrap-item shadow-none btn-secondary text-center py-3 text-decoration-none text-white col-6">마이페이지</a>
 				<a href="/user/logout_process" class="userwrap-item shadow-none btn-secondary text-center py-3 text-decoration-none text-white col-6">로그아웃</a>
 			</div>
+<% } else { -%>
+			<div class="d-flex">
+				<a href="/user/login" class="userwrap-item shadow-none btn-secondary text-center py-3 text-decoration-none text-white col-6">로그인</a>
+				<a href="/user/register" class="userwrap-item shadow-none btn-secondary text-center py-3 text-decoration-none text-white col-6">회원가입</a>
+			</div>
+<% } -%>
 		</div>
 	</div>
 
@@ -29,7 +37,7 @@
 					<td></td>
 					<td class="text-start"><%= boards[i].btitle %></td>
 					<td><%= boards[i].uid %></td>
-					<td>100</td>
+					<td><%= boards[i].bhit %></td>
 				</tr>
 <% } -%>
 			</tbody>

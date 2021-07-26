@@ -12,8 +12,10 @@ router.get('/write', function(req, res, next) {
 });
 
 router.get('/view', function(req, res, next) {
-  console.log(req.query.bid)
   DBcon.query("SELECT * FROM boards WHERE bid = ?",[req.query.bid], function(err, rows, fields) {
+
+    DBcon.query("UPDATE boards SET bhit = bhit + 1 WHERE bid = ?",[req.query.bid])
+
     res.render('view', { title: 'view', session: req.session, title:rows[0].btitle, content: rows[0].bcontent,  });
   })
 });

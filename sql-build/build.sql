@@ -23,6 +23,7 @@ CREATE TABLE boards (
 	btitle VARCHAR(100) NOT NULL,
 	bcontent VARCHAR(1000) NOT NULL,
 	bupdate datetime NOT NULL DEFAULT NOW(),
+	bhit INT(11) NOT NULL DEFAULT 0,
 	FOREIGN KEY(uid) references users(uid)
 	ON DELETE CASCADE
 );
